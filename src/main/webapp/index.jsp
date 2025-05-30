@@ -10,5 +10,7 @@
 <a href="students">Bài 2</a><br>
 <a href="register">Bài 3</a><br>
 <a href="home">Bài 4</a><br>
+<a href="search">Bài 5</a><br>
+<a href="products">Bài 6</a><br>
 </body>
 </html>

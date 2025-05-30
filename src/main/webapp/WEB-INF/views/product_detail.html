@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chi tiết sản phẩm</title>
+</head>
+<body>
+<h1 th:text="${product.name}"></h1>
+<p th:text="${product.description}"></p>
+<p>Giá: <span th:text="${product.price}"></span> đ</p>
+
+<h2>Đánh giá:</h2>
+<div th:if="${reviews.isEmpty()}">
+    <p>Chưa có đánh giá nào.</p>
+</div>
+<table th:if="${!reviews.isEmpty()}">
+    <thead>
+    <tr>
+        <th>Rating</th>
+        <th>Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${reviews}">
+        <td th:text="${r.rating} + ' sao'"></td>
+        <td th:text="${r.comment}"></td>
+    </tr>
+    </tbody>
+</table>
+<h2>Gửi đánh giá:</h2>
+<form th:action="@{review}" method="post">
+    <input type="hidden" name="idProduct" th:value="${productId}"/>
+    <input type="hidden" name="idUser" value="1"/> <!-- giả lập -->
+    <label>Số sao: </label>
+    <input type="number" name="rating" min="1" max="5" required/><br/>
+    <label>Nhận xét: </label>
+    <textarea name="comment" required></textarea><br/>
+    <button type="submit">Gửi đánh giá</button>
+</form>
+</body>
+</html>
