@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+<h2>Form Đăng Ký</h2>
+<form th:action="@{/register}" th:object="${userDTO}" method="post">
+    <label>Tên:</label>
+    <input type="text" th:field="*{name}" />
+    <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <br>
+
+    <label>Email:</label>
+    <input type="text" th:field="*{email}" />
+    <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+    <br>
+
+    <label>Mật khẩu:</label>
+    <input type="password" th:field="*{password}" />
+    <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+    <br>
+
+    <button type="submit">Đăng ký</button>
+</form>
+</body>
+</html>
