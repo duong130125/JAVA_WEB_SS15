@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chỉnh sửa CV</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container mt-4">
+  <h2>Chỉnh sửa CV</h2>
+  <form th:action="@{/update}" th:object="${resumeDTO}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <div class="mb-3">
+      <label class="form-label">Tên đầy đủ *</label>
+      <input type="text" th:field="*{fullName}" class="form-control"/>
+      <div class="text-danger" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email *</label>
+      <input type="email" th:field="*{email}" class="form-control"/>
+      <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Số điện thoại *</label>
+      <input type="text" th:field="*{phoneNumber}" class="form-control"/>
+      <div class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Trình độ học vấn</label>
+      <textarea th:field="*{education}" class="form-control"></textarea>
+      <div class="text-danger" th:if="${#fields.hasErrors('education')}" th:errors="*{education}"></div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Kinh nghiệm làm việc</label>
+      <textarea th:field="*{experience}" class="form-control"></textarea>
+      <div class="text-danger" th:if="${#fields.hasErrors('experience')}" th:errors="*{experience}"></div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Kỹ năng</label>
+      <textarea th:field="*{skills}" class="form-control"></textarea>
+      <div class="text-danger" th:if="${#fields.hasErrors('skills')}" th:errors="*{skills}"></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <a th:href="@{/resumes}" class="btn btn-secondary">Hủy</a>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Danh sách CV</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Danh sách CV</h2>
+    <a th:href="@{/add}" class="btn btn-primary mb-3">+ Thêm CV mới</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>SĐT</th>
+            <th>Trình độ</th>
+            <th>Kinh nghiệm</th>
+            <th>Kỹ năng</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="resume : ${resumes}">
+            <td th:text="${resume.fullName}"></td>
+            <td th:text="${resume.email}"></td>
+            <td th:text="${resume.phoneNumber}"></td>
+            <td th:text="${resume.education}"></td>
+            <td th:text="${resume.experience}"></td>
+            <td th:text="${resume.skills}"></td>
+            <td>
+                <a th:href="@{edit/{id}(id=${resume.id})}" class="btn btn-sm btn-warning">Sửa</a>
+                <a th:href="@{delete/{id}(id=${resume.id})}" class="btn btn-sm btn-danger"
+                   onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
